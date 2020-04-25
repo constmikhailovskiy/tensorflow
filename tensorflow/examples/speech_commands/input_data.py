@@ -282,6 +282,7 @@ class AudioProcessor(object):
     search_path = os.path.join(self.data_dir, '*', '*.wav')
     for wav_path in gfile.Glob(search_path):
       _, word = os.path.split(os.path.dirname(wav_path))
+      tf.compat.v1.logging.info('word {0}, wav path {1}'.format(word, wav_path))
       word = word.lower()
       # Treat the '_background_noise_' folder as a special case, since we expect
       # it to contain long audio samples we mix in to improve training.
